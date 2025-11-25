@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>F1 MOVIE 2025 — НЕОНОВЫЙ ОГОНЬ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Rajdhani:wght@700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #000;
+      color: white;
+      font-family: 'Rajdhani', sans-serif;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at top, #120038 0%, #000 70%),
+        url('https://wallpapercave.com/wp/wp12345678.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+    }
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(0,0,0,0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 4px solid #ff0044;
+      z-index: 1000;
+      padding: 20px 0;
+    }
+    .logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 4rem;
+      background: linear-gradient(90deg, #ff0044, #ffffff, #ff0044);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 40px #ff0044;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 30px;
+      font-size: 1.5rem;
+      position: relative;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0; height: 3px;
+      background: #ff0044;
+      bottom: -10px; left: 50%;
+      transition: all 0.4s;
+      box-shadow: 0 0 20px #ff0044;
+    }
+    nav a:hover::after { width: 100%; left: 0; }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+    .hero h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 12rem;
+      background: linear-gradient(45deg, #ff0044, #00ffff, #ff0044);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 80px #ff0044, 0 0 160px #00ffff;
+      animation: glow 3s infinite;
+    }
+    @keyframes glow {
+      0%,100% { text-shadow: 0 0 80px #ff0044, 0 0 160px #00ffff; }
+      50% { text-shadow: 0 0 120px #ff0044, 0 0 200px #00ffff; }
+    }
+    .btn {
+      margin-top: 50px;
+      padding: 25px 80px;
+      font-size: 3rem;
+      background: #ff0044;
+      border: none;
+      border-radius: 50px;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 0 60px #ff0044;
+      transition: all 0.4s;
+    }
+    .btn:hover {
+      transform: scale(1.2);
+      box-shadow: 0 0 100px #ff0044;
+    }
+
+    .teams {
+      padding: 150px 50px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+    .team-card {
+      background: rgba(20,0,40,0.8);
+      border-radius: 30px;
+      overflow: hidden;
+      border: 3px solid transparent;
+      transition: all 0.5s;
+      position: relative;
+    }
+    .team-card:hover {
+      border-color: #ff0044;
+      box-shadow: 0 0 80px #ff0044;
+      transform: translateY(-20px);
+    }
+    .team-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: contain;
+      background: black;
+    }
+    .team-name {
+      text-align: center;
+      padding: 20px;
+      font-size: 2.5rem;
+      font-weight: bold;
+      background: linear-gradient(90deg, #ff0044, #00ffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div style="max-width:1400px; margin:auto; display:flex; justify-content:space-between; align-items:center; padding:0 50px;">
+      <div class="logo">F1 MOVIE</div>
+      <nav>
+        <a href="#home">Главная</a>
+        <a href="#teams">Команды</a>
+        <a href="#poster">Постер</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <h1>F1 THE MOVIE</h1>
+    <p style="font-size:3rem; margin:30px 0;">Брэд Питт • 27 июня 2025</p>
+    <button class="btn" onclick="window.location.href='#teams'">ЖМИ СЮДА</button>
+  </section>
+
+  <section class="teams" id="teams">
+    <div class="team-card"><img src="/img/2025mclarencarright.avif"><div class="team-name">McLaren</div></div>
+    <div class="team-card"><img src="img/2025ferraricarright.avif"><div class="team-name">Ferrari</div></div>
+    <div class="team-card"><img src="img/2025redbullracingcarright.avif"><div class="team-name">Red Bull</div></div>
+    <div class="team-card"><img src="img/2025mercedescarright.avif"><div class="team-name">Mercedes</div></div>
+    <div class="team-card"><img src="img/2025astonmartincarright.avif"><div class="team-name">Aston Martin</div></div>
+    <div class="team-card"><img src="img/2025alpinecarright.avif"><div class="team-name">Alpine</div></div>
+  </section>
+
+  <script>
+    // Просто для красоты
+    document.querySelector('.btn').addEventListener('mouseenter', e => {
+      e.target.style.background = 'linear-gradient(45deg, #ff0044, #00ffff)';
+    });
+    document.querySelector('.btn').addEventListener('mouseleave', e => {
+      e.target.style.background = '#ff0044';
+    });
+  </script>
+</body>
+</html>
+  <!-- ОФИЦИАЛЬНЫЙ ТРЕЙЛЕР -->
+<div style="max-width:1200px; margin:auto;">
+  <a href="https://youtu.be/8SdL-PUJh6Q?si=lj4VA_wsR75Qwsjt" target="_blank"
+     style="display:block; padding:80px; background:#ff0044; border-radius:30px; 
+            text-align:center; font-size:3rem; color:white; text-decoration:none;
+            box-shadow:0 0 100px #ff0044; transition:all 0.4s;">
+    ▶ СМОТРЕТЬ ОФИЦИАЛЬНЫЙ ТРЕЙЛЕР НА YOUTUBE
+  </a>
+</div>
+  </section>
+  <!-- ГЛАВНЫЕ ГЕРОИ — КНОПКИ НА ОТДЕЛЬНЫЕ СТРАНИЦЫ -->
+  <section style="padding:180px 50px; background:#000; text-align:center;">
+    <h2 style="font-size:7rem; margin-bottom:120px; background:linear-gradient(90deg,#ff0044,#00ffff,#ff0044); -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-shadow:0 0 80px #ff0044;">
+      ГЛАВНЫЕ ГЕРОИ
+    </h2>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(500px,1fr)); gap:80px; max-width:1400px; margin:auto;">
+      
+      <!-- БРЭД ПИТТ -->
+      <div style="cursor:pointer;" onclick="document.getElementById('brad').scrollIntoView({behavior:'smooth'})">
+        <img src="img/f1movie-1.jpg" style="width:100%; border-radius:40px; border:8px solid #ff0044; box-shadow:0 0 120px #ff0044; transition:all 0.6s;" 
+             onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+        <h3 style="font-size:4rem; margin:40px 0; color:#ff0044; text-shadow:0 0 60px #ff0044;">БРЭД ПИТТ</h3>
+        <p style="font-size:2rem; color:#00ffff;">Сонни Хейс — легенда, возвращается в F1</p>
+      </div>
+
+      <!-- ДЭМСОН ИДРИС -->
+      <div style="cursor:pointer;" onclick="document.getElementById('damson').scrollIntoView({behavior:'smooth'})">
+        <img src="img/4aa236c6b422b96196b8b40d6d201.webp" style="width:100%; border-radius:40px; border:8px solid #00ffff; box-shadow:0 0 120px #00ffff; transition:all 0.6s;"
+             onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+        <h3 style="font-size:4rem; margin:40px 0; color:#00ffff; text-shadow:0 0 60px #00ffff;">ДЭМСОН ИДРИС</h3>
+        <p style="font-size:2rem; color:#ff0044;">Джошуа Пирс — молодой гений</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== БРЭД ПИТТ — ПОДРОБНАЯ СТРАНИЦА ===== -->
+  <section id="brad" style="padding:200px 50px; background:linear-gradient(#000,#110011); min-height:100vh; position:relative;">
+    <div style="max-width:1400px; margin:auto; display:grid; grid-template-columns:1fr 1fr; gap:100px; align-items:center;">
+      <div>
+        <img src="img/347513721287201.webp" style="width:100%; border-radius:50px; border:10px solid #ff0044; box-shadow:0 0 150px #ff0044;">
+      </div>
+      <div style="color:white;">
+        <h2 style="font-size:8rem; background:linear-gradient(90deg,#ff0044,white); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:50px;">
+          БРЭД ПИТТ
+        </h2>
+        <h3 style="font-size:4rem; color:#ff0044; margin:40px 0;">Сонни Хейс</h3>
+        <p style="font-size:2rem; line-height:2; color:#ccc;">
+          • Бывший чемпион Формулы-1 90-х<br>
+          • Ушёл из спорта после страшной аварии<br>
+          • Возвращается в 2025 году в вымышленную команду APX GP<br>
+          • Наставник молодого поколения<br>
+          • "Я не вернулся ради славы. Я вернулся, потому что не умею жить без скорости."
+        </p>
+        <div style="margin-top:60px; padding:30px; background:rgba(255,0,68,0.2); border-left:8px solid #ff0044; border-radius:20px; font-size:2.2rem; color:#ff0044;">
+          <strong>Цитата:</strong> "В F1 либо ты первый, либо ты никто."
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ДЭМСОН ИДРИС — ПОДРОБНАЯ СТРАНИЦА ===== -->
+  <section id="damson" style="padding:200px 50px; background:linear-gradient(#110011,#000); min-height:100vh; position:relative;">
+    <div style="max-width:1400px; margin:auto; display:grid; grid-template-columns:1fr 1fr; gap:100px; align-items:center;">
+      <div style="order:2;">
+        <img src="img/shutterstock_2327891931.jpg" style="width:100%; border-radius:50px; border:10px solid #00ffff; box-shadow:0 0 150px #00ffff;">
+      </div>
+      <div style="color:white;">
+        <h2 style="font-size:8rem; background:linear-gradient(90deg,#00ffff,white); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:50px;">
+          ДЭМСОН ИДРИС
+        </h2>
+        <h3 style="font-size:4rem; color:#00ffff; margin:40px 0;">Джошуа Пирс</h3>
+        <p style="font-size:2rem; line-height:2; color:#ccc;">
+          • 22-летний вундеркинд из Великобритании<br>
+          • Дебютант в команде APX GP<br>
+          • Считается будущим чемпионом<br>
+          • Ученик Сонни Хейса<br>
+          • "Я не хочу быть следующим Хэмилтоном. Я хочу быть первым Пирсом."
+        </p>
+        <div style="margin-top:60px; padding:30px; background:rgba(0,255,255,0.2); border-left:8px solid #00ffff; border-radius:20px; font-size:2.2rem; color:#00ffff;">
+          <strong>Цитата:</strong> "Скорость — это не талант. Это одержимость."
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- СЧЁТЧИК ДО ПРЕМЬЕРЫ (оставляем) -->
+  <section style="padding:150px 50px; text-align:center; background:#000;">
+    <h2 style="font-size:6rem; margin-bottom:80px; color:#ff0044; text-shadow:0 0 80px #ff0044;">
+       ПРЕМЬЕРА
+    </h2>
+    <div id="countdown" style="font-size:8rem; font-weight:900; background:linear-gradient(90deg,#ff0044,#00ffff); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">
+      ЗАГРУЗКА...
+    </div>
+  </section>
+
+  <script>
+    const premiere = new Date('2025-06-27T00:00:00');
+    function updateCountdown() {
+      const diff = premiere - new Date();
+      if (diff <= 0) {
+        document.getElementById('countdown').textContent = 'УЖЕ В КИНО!';
+        return;
+      }
+      const days = Math.floor(diff / (1000*60*60*24));
+      const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+      const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
+      document.getElementById('countdown').textContent = `${days} ДНЕЙ ${hours} ЧАСОВ ${minutes} МИНУТ`;
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 60000);
+  </script>
+  
