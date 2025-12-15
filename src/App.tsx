@@ -134,6 +134,9 @@ const MainSite = () => {
         <Route path="/basket/:id" element={<BasketDetail />} />
         <Route path="/create" element={<CreateOrder />} />
         <Route path="/update/:id" element={<UpdateOrder />} />
+        <Route path="/login" element={<Login />} />
+<Route path="/register" element={<Register />} />
+<Route path="*" element={currentUser ? <MainSite /> : <Navigate to="/login" />} />
       </Routes>
 
       <style jsx>{`

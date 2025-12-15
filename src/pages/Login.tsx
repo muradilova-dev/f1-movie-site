@@ -1,44 +1,56 @@
 import React, { useState } from 'react';
-import { useAuth } from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
-const Register = () => {
+const Login = () => {
   const [email, setEmail] = useState('');
-  const { login } = useAuth();
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleRegister = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      login(email);
-      navigate('/basket');
+    setError('');
+
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const user = users.find((u: any) => u.email === email);
+
+    if (!user) {
+      setError('Пользователь не найден');
+      return;
     }
+
+    localStorage.setItem('currentUser', JSON.stringify(user));
+    navigate('/');
   };
 
   return (
-    <div className="pt-32 min-h-screen flex items-center justify-center" style={{ background: 'linear-gradient(#000, #110033)' }}>
-      <div className="max-w-lg w-full px-10">
-        <h1 className="text-center text-8xl font-black mb-16" style={{ textShadow: '0 0 80px #00ffff' }}>
-          <span className="bg-gradient-to-r from-cyan-400 to-red-600 bg-clip-text text-transparent">
-            РЕГИСТРАЦИЯ
-          </span>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-purple-900 to-black">
+      <div className="w-full max-w-md p-10 bg-black/90 border-4 border-red-600 rounded-3xl shadow-2xl">
+        <h1 className="text-center text-7xl font-black mb-12 text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-cyan-400">
+          ВХОД
         </h1>
-        <form onSubmit={handleRegister} className="space-y-12">
+        {error && <p className="text-red-500 text-center mb-6 text-xl">{error}</p>}
+        <form onSubmit={handleSubmit} className="space-y-8">
           <input
             type="email"
-            placeholder="Твой email"
+            placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="w-full px-10 py-8 text-3xl bg-black/80 border-4 border-cyan-600 rounded-3xl text-white placeholder-gray-500 focus:border-red-400 focus:outline-none"
+            className="w-full px-6 py-5 text-xl bg-gray-900 border-2 border-red-600 rounded-xl text-white focus:border-cyan-400 focus:outline-none"
           />
-          <button type="submit" className="w-full py-10 text-5xl bg-gradient-to-r from-cyan-600 to-red-600 rounded-full shadow-2xl hover:shadow-red-600/70 transition font-black">
-            ПРИСОЕДИНИТЬСЯ К F1
+          <button
+            type="submit"
+            className="w-full py-6 text-4xl font-bold bg-gradient-to-r from-red-600 to-cyan-600 rounded-full shadow-2xl hover:shadow-cyan-600/70 transition"
+          >
+            ВОЙТИ
           </button>
         </form>
+        <p className="text-center mt-8 text-xl">
+          Нет аккаунта? <Link to="/register" className="text-cyan-400 hover:text-cyan-300">Регистрация</Link>
+        </p>
       </div>
     </div>
   );
 };
 
-export default Register;
+export default Login;

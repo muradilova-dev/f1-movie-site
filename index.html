@@ -217,11 +217,99 @@
       font-size: 1.4rem;
       letter-spacing: 2px;
     }
+
+    /* КОМПАКТНАЯ ФОРМА АВТОРИЗАЦИИ И РЕГИСТРАЦИИ — УМЕНЬШЕНА */
+    .auth-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(#000, #110033);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+    .auth-box {
+      max-width: 450px;
+      width: 90%;
+      padding: 30px;
+      background: rgba(0,0,0,0.8);
+      border: 3px solid #ff0044;
+      border-radius: 25px;
+      text-align: center;
+      box-shadow: 0 0 70px #ff0044;
+    }
+    .auth-box h1 {
+      font-size: 4rem;
+      margin-bottom: 30px;
+      background: linear-gradient(90deg, #ff0044, #00ffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 40px #ff0044;
+    }
+    .auth-box input {
+      width: 100%;
+      padding: 15px;
+      margin: 12px 0;
+      font-size: 1.5rem;
+      background: rgba(255,255,255,0.1);
+      border: 2px solid #ff0044;
+      border-radius: 20px;
+      color: white;
+    }
+    .auth-box button {
+      width: 100%;
+      padding: 15px;
+      margin-top: 20px;
+      font-size: 2rem;
+      background: #ff0044;
+      border: none;
+      border-radius: 35px;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 0 50px #ff0044;
+      transition: all 0.4s;
+    }
+    .auth-box button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 70px #ff0044;
+    }
+    .auth-box p {
+      margin-top: 20px;
+      font-size: 1.3rem;
+      color: #cccccc;
+    }
+    .auth-box a {
+      color: #00ffff;
+      cursor: pointer;
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
 
-  <!-- ХЕДЕР -->
+  <!-- КОМПАКТНАЯ ФОРМА АВТОРИЗАЦИИ И РЕГИСТРАЦИИ -->
+  <div id="auth-overlay" class="auth-overlay">
+    <div class="auth-box">
+      <h1 id="auth-title">ВХОД</h1>
+      <div id="login-form">
+        <input type="email" id="login-email" placeholder="Email" required>
+        <button onclick="performLogin()">ВОЙТИ</button>
+        <p>Нет аккаунта? <a onclick="switchToRegister()">Регистрация</a></p>
+      </div>
+      <div id="register-form" style="display:none;">
+        <input type="text" id="reg-firstname" placeholder="Имя" required>
+        <input type="text" id="reg-lastname" placeholder="Фамилия" required>
+        <input type="email" id="reg-email" placeholder="Email" required>
+        <input type="tel" id="reg-phone" placeholder="Телефон" required>
+        <input type="password" id="reg-password" placeholder="Пароль" required>
+        <input type="password" id="reg-confirm" placeholder="Подтвердите пароль" required>
+        <button onclick="performRegister()">ЗАРЕГИСТРИРОВАТЬСЯ</button>
+        <p>Уже есть аккаунт? <a onclick="switchToLogin()">Войти</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ТВОЙ САЙТ -->
   <header>
     <div class="header-container">
       <div class="logo">F1 MOVIE</div>
@@ -230,19 +318,20 @@
         <a href="#teams">Команды</a>
         <a href="#heroes">Герои</a>
         <a href="#cart">Корзина</a>
+        <span id="user-greeting" style="color:#00ffff;"></span>
+        <button id="logout-btn" style="background:none; border:none; color:#ff0044; font-size:1.8rem; cursor:pointer;">Выйти</button>
       </nav>
     </div>
   </header>
 
   <main>
-    <!-- ГЛАВНАЯ -->
+    <!-- ТВОЙ КОНТЕНТ (главная, команды, герои, корзина, трейлер, счётчик) — оставил без изменений -->
     <section class="hero" id="home">
       <h1>F1 THE MOVIE</h1>
       <p style="font-size:3.5rem; margin:30px 0; z-index:1;">Брэд Питт • 27 июня 2025</p>
       <button class="btn" onclick="document.getElementById('teams').scrollIntoView({behavior:'smooth'})">ВПЕРЁД!</button>
     </section>
 
-    <!-- КОМАНДЫ -->
     <div class="section-title" id="teams">КОМАНДЫ 2025</div>
     <div class="grid">
       <div class="card"><img src="img/2025mclarencarright.avif"><div class="card-title">McLaren</div></div>
@@ -253,7 +342,6 @@
       <div class="card"><img src="img/2025alpinecarright.avif"><div class="card-title">Alpine</div></div>
     </div>
 
-    <!-- ГЕРОИ -->
     <div class="section-title" id="heroes">ГЛАВНЫЕ ГЕРОИ</div>
     <div class="grid">
       <div class="card" onclick="document.getElementById('brad').scrollIntoView({behavior:'smooth'})">
@@ -264,7 +352,6 @@
       </div>
     </div>
 
-    <!-- БРЭД ПИТТ -->
     <section id="brad" style="padding:200px 50px; background:linear-gradient(#000,#110011);">
       <div style="max-width:1400px; margin:auto; display:grid; grid-template-columns:1fr 1fr; gap:100px; align-items:center;">
         <img src="img/347513721287201.webp" style="border-radius:50px; border:10px solid #ff0044; box-shadow:0 0 150px #ff0044;">
@@ -278,7 +365,6 @@
       </div>
     </section>
 
-    <!-- ДЭМСОН ИДРИС -->
     <section id="damson" style="padding:200px 50px; background:linear-gradient(#110011,#000);">
       <div style="max-width:1400px; margin:auto; display:grid; grid-template-columns:1fr 1fr; gap:100px; align-items:center;">
         <div style="order:2;">
@@ -294,7 +380,6 @@
       </div>
     </section>
 
-    <!-- КОРЗИНА -->
     <div class="section-title" id="cart">КОРЗИНА</div>
     <div class="grid" id="cart-items">
       <div class="card">
@@ -314,7 +399,6 @@
       <button class="btn" onclick="addToCart()">ДОБАВИТЬ МЕРЧ</button>
     </div>
 
-    <!-- ТРЕЙЛЕР -->
     <div style="padding:150px 50px; text-align:center;">
       <a href="https://youtu.be/8SdL-PUJh6Q" target="_blank"
          style="display:inline-block; padding:80px 200px; background:#ff0044; border-radius:60px; font-size:4rem; color:white; text-decoration:none; box-shadow:0 0 120px #ff0044;">
@@ -322,7 +406,6 @@
       </a>
     </div>
 
-    <!-- СЧЁТЧИК -->
     <div style="padding:150px 50px; text-align:center; background:#000;">
       <h2 class="section-title">ДО ПРЕМЬЕРЫ</h2>
       <div id="countdown" style="font-size:8rem; background:linear-gradient(90deg,#ff0044,#00ffff); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">
@@ -331,7 +414,6 @@
     </div>
   </main>
 
-  <!-- ФУТЕР — ИСПРАВЛЕННЫЙ! -->
   <footer>
     <div class="footer-container">
       <h2 class="footer-logo">F1 MOVIE 2025</h2>
@@ -353,32 +435,125 @@
   </footer>
 
   <script>
-    function addToCart() {
-      const items = ['Постер фильма', 'Модель машины APX GP', 'Кружка F1', 'Билет на премьеру'];
-      const random = items[Math.floor(Math.random() * items.length)];
-      const price = Math.floor(Math.random() * 8000) + 1500;
-      const div = document.createElement('div');
-      div.className = 'card';
-      div.innerHTML = `
-        <img src="img/f1movie-1.jpg">
-        <div class="card-title">${random}</div>
-        <div style="text-align:center; font-size:2.5rem; color:#00ffff;">₽${price}</div>
-        <button class="remove-btn" onclick="this.parentElement.remove()">Убрать</button>
-      `;
-      document.getElementById('cart-items').appendChild(div);
+    function switchToRegister() {
+      document.getElementById('auth-title').textContent = 'РЕГИСТРАЦИЯ';
+      document.getElementById('login-form').style.display = 'none';
+      document.getElementById('register-form').style.display = 'block';
     }
 
-    const premiere = new Date('2025-06-27T00:00:00');
-    function updateCountdown() {
-      const diff = premiere - new Date();
-      if (diff <= 0) return document.getElementById('countdown').textContent = 'УЖЕ В КИНО!';
-      const days = Math.floor(diff / (1000*60*60*24));
-      const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-      const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
-      document.getElementById('countdown').textContent = `${days} ДНЕЙ ${hours} ЧАСОВ ${minutes} МИНУТ`;
+    function switchToLogin() {
+      document.getElementById('auth-title').textContent = 'ВХОД';
+      document.getElementById('login-form').style.display = 'block';
+      document.getElementById('register-form').style.display = 'none';
     }
-    updateCountdown();
-    setInterval(updateCountdown, 60000);
+
+    function performRegister() {
+      const firstName = document.getElementById('reg-firstname').value.trim();
+      const lastName = document.getElementById('reg-lastname').value.trim();
+      const email = document.getElementById('reg-email').value.trim();
+      const phone = document.getElementById('reg-phone').value.trim();
+      const password = document.getElementById('reg-password').value;
+      const confirm = document.getElementById('reg-confirm').value;
+
+      if (!firstName || !lastName || !email || !phone || !password) {
+        alert('Заполни все поля!');
+        return;
+      }
+      if (password !== confirm) {
+        alert('Пароли не совпадают!');
+        return;
+      }
+      if (password.length < 6) {
+        alert('Пароль должен быть минимум 6 символов');
+        return;
+      }
+
+      const users = JSON.parse(localStorage.getItem('f1-users') || '[]');
+      if (users.find(u => u.email === email)) {
+        alert('Этот email уже зарегистрирован');
+        return;
+      }
+
+      const newUser = { firstName, lastName, email, phone };
+      users.push(newUser);
+      localStorage.setItem('f1-users', JSON.stringify(users));
+      localStorage.setItem('f1-user', email);
+
+      document.getElementById('auth-overlay').style.display = 'none';
+      document.getElementById('user-greeting').textContent = 'Привет, ' + firstName + '!';
+      document.getElementById('logout-btn').style.display = 'inline';
+    }
+
+    function performLogin() {
+      const email = document.getElementById('login-email').value.trim();
+      if (!email) {
+        alert('Введи email!');
+        return;
+      }
+
+      const users = JSON.parse(localStorage.getItem('f1-users') || '[]');
+      const user = users.find(u => u.email === email);
+      if (!user) {
+        alert('Пользователь не найден. Зарегистрируйся!');
+        return;
+      }
+
+      localStorage.setItem('f1-user', email);
+      document.getElementById('auth-overlay').style.display = 'none';
+      document.getElementById('user-greeting').textContent = 'Привет, ' + user.firstName + '!';
+      document.getElementById('logout-btn').style.display = 'inline';
+    }
+
+    function performLogout() {
+      localStorage.removeItem('f1-user');
+      document.getElementById('auth-overlay').style.display = 'flex';
+      document.getElementById('user-greeting').textContent = '';
+      document.getElementById('logout-btn').style.display = 'none';
+    }
+
+    window.onload = function() {
+      const userEmail = localStorage.getItem('f1-user');
+      if (userEmail) {
+        const users = JSON.parse(localStorage.getItem('f1-users') || '[]');
+        const user = users.find(u => u.email === userEmail);
+        document.getElementById('auth-overlay').style.display = 'none';
+        document.getElementById('user-greeting').textContent = 'Привет, ' + (user ? user.firstName : userEmail.split('@')[0]) + '!';
+        document.getElementById('logout-btn').style.display = 'inline';
+        document.getElementById('logout-btn').onclick = performLogout;
+      } else {
+        document.getElementById('auth-overlay').style.display = 'flex';
+      }
+
+      function addToCart() {
+        const items = ['Постер фильма', 'Модель машины APX GP', 'Кружка F1', 'Билет на премьеру'];
+        const random = items[Math.floor(Math.random() * items.length)];
+        const price = Math.floor(Math.random() * 8000) + 1500;
+        const div = document.createElement('div');
+        div.className = 'card';
+        div.innerHTML = `
+          <img src="img/f1movie-1.jpg">
+          <div class="card-title">${random}</div>
+          <div style="text-align:center; font-size:2.5rem; color:#00ffff;">₽${price}</div>
+          <button class="remove-btn" onclick="this.parentElement.remove()">Убрать</button>
+        `;
+        document.getElementById('cart-items').appendChild(div);
+      }
+
+      const premiere = new Date('2025-06-27T00:00:00');
+      function updateCountdown() {
+        const diff = premiere - new Date();
+        if (diff <= 0) {
+          document.getElementById('countdown').textContent = 'УЖЕ В КИНО!';
+          return;
+        }
+        const days = Math.floor(diff / (1000*60*60*24));
+        const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+        const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
+        document.getElementById('countdown').textContent = `${days} ДНЕЙ ${hours} ЧАСОВ ${minutes} МИНУТ`;
+      }
+      updateCountdown();
+      setInterval(updateCountdown, 60000);
+    };
   </script>
 </body>
 </html>
